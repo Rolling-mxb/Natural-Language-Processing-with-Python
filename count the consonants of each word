@@ -1,0 +1,23 @@
+# How to count the consonants of each word. The find a word with the largest number of consonants
+
+'''
+def helper_is_consonants(ch):
+    ch = ch.upper()
+    return not (ch == 'A' or ch == 'E' or ch == 'I' or ch == 'O' or ch == 'U')
+
+
+def helper_totalconsonants(string):
+    count = 0
+    for i in range(len(string)):
+        if (helper_is_consonants(string[i])):
+            count += 1
+    return count
+
+
+def has_most_consonants(text):
+    text = text.split()
+    word = sorted(text, key=helper_totalconsonants, reverse=True)
+    key = helper_totalconsonants(word[0])
+    ret = list(filter(lambda x: helper_totalconsonants(x) == key, word))
+    return ret
+ '''
