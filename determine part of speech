@@ -1,0 +1,14 @@
+# How to determine part of speech like n. v. adj. etc
+
+def is_determiner(word):
+    word = nltk.word_tokenize(word)
+    return True if nltk.pos_tag(word)[0][1] == 'DT' else False
+
+# Then to remove it
+def remove_determiners(text):
+    ret = ""
+    text = nltk.word_tokenize(text)
+    for i in text:
+        if is_determiner(i) == False:
+            ret = ret + ' ' + i
+    print(ret)
