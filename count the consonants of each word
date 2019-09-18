@@ -21,3 +21,29 @@ def has_most_consonants(text):
     ret = list(filter(lambda x: helper_totalconsonants(x) == key, word))
     return ret
  '''
+ 
+ ##############################################
+ 9.18 updat
+ Better way to do it is
+ '''
+CONSONANTS = set('bcdfghjklmnpqrstvwxz')
+
+def has_most_consonants(text):
+# Keep a running list with all words that have what is at that point the
+# largest number of consonants. If a word with more consonants is found, clear
+# the list, reset the new highest count and start building a new list
+    answer = []
+    consonants = -1
+    for token in text.split():
+        count = len([c for c in token.lower() if c in CONSONANTS])
+        # check if new count is higher than previous max count
+        if count > consonants:
+            answer = []
+            consonants = count
+        # if count is same as max, append to answer, else do nothing
+        if count == consonants:
+            answer.append(token)
+    # remove duplicates and return
+    return list(set(answer))
+
+has_most_consonants('The door is closed. And many dogs barked.')
